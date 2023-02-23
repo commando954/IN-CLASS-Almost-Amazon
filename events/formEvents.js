@@ -47,8 +47,8 @@ const formEvents = () => {
     if (e.target.id.includes('submit-author')) {
       const payload = {
         email: document.querySelector('#email').value,
-        first_name: document.querySelector('#description').value,
-        last_name: document.querySelector('#image').value,
+        first_name: document.querySelector('#first_name').value,
+        last_name: document.querySelector('#last_name').value,
         favorite: document.querySelector('#favorite').checked,
       };
 
@@ -65,8 +65,8 @@ const formEvents = () => {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
         email: document.querySelector('#email').value,
-        first_name: document.querySelector('#description').value,
-        last_name: document.querySelector('#image').value,
+        first_name: document.querySelector('#first_name').value,
+        last_name: document.querySelector('#last_name').value,
         favorite: document.querySelector('#favorite').checked,
         firebaseKey,
       };
