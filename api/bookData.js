@@ -12,7 +12,13 @@ const getBooks = () => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 
@@ -58,7 +64,7 @@ const createBook = (payload) => new Promise((resolve, reject) => {
 
 // TODO: UPDATE BOOK
 const updateBook = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/books/${payload.firebasekey}.json`, {
+  fetch(`${endpoint}/books/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -66,7 +72,7 @@ const updateBook = (payload) => new Promise((resolve, reject) => {
     body: JSON.stringify(payload),
   })
     .then((response) => response.json())
-    .then((data) => resolve(data))
+    .then(resolve)
     .catch(reject);
 });
 

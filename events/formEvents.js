@@ -1,6 +1,6 @@
 import { showBooks } from '../pages/books';
 import { getBooks, createBook, updateBook } from '../api/bookData';
-import { getAuthors, updateAuthor } from '../api/authorData';
+import { createAuthor, getAuthors, updateAuthor } from '../api/authorData';
 import { showAuthors } from '../pages/authors';
 
 const formEvents = () => {
@@ -52,7 +52,7 @@ const formEvents = () => {
         favorite: document.querySelector('#favorite').checked,
       };
 
-      createBook(payload).then(({ name }) => {
+      createAuthor(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
         updateAuthor(patchPayload).then(() => {
@@ -60,6 +60,7 @@ const formEvents = () => {
         });
       });
     }
+
     // FIXME:ADD CLICK EVENT FOR EDITING AN AUTHOR
     if (e.target.id.includes('update-author')) {
       const [, firebaseKey] = e.target.id.split('--');
@@ -71,7 +72,7 @@ const formEvents = () => {
         firebaseKey,
       };
 
-      updateBook(payload).then(() => {
+      updateAuthor(payload).then(() => {
         getAuthors().then(showAuthors);
       });
     }
