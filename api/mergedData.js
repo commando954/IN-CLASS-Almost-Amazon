@@ -15,9 +15,9 @@ const getBookDetails = (firebaseKey) => new Promise((resolve, reject) => {
 
 const getAuthorDetails = (firebaseKey) => new Promise((resolve, reject) => {
   // GET SINGLE AUTHOR
-  getSingleAuthor(firebaseKey).then((bookObject) => { // returns single author object
-    getAuthorBooks(bookObject.author_id) // we nest this promise so that we can use the book object
-      .then((authorBooksArray) => resolve({ ...bookObject, authorBooksArray }));
+  getSingleAuthor(firebaseKey).then((authorObject) => { // returns single author object
+    getAuthorBooks(authorObject.firebaseKey) // we nest this promise so that we can use the book object
+      .then((bookArray) => resolve({ ...authorObject, bookArray }));
   }).catch(reject);
   // GET AUTHOR
   // Create an object that has book data and an object named authorObject
