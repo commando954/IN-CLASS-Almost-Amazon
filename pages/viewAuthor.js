@@ -3,7 +3,7 @@ import renderToDOM from '../utils/renderToDom';
 
 const viewAuthor = (obj) => {
   clearDom();
-  let domString = `
+  const domString1 = `
     <div class="text-white ms-5 details">
       <h5>${obj.first_name} ${obj.last_name} ${obj.favorite ? '<span class="badge bg-danger"><i class="fa fa-heart" aria-hidden="true"></i></span>' : ''}</h5>
       Author Email: <a href="mailto:${obj.email}">${obj.email}</a>
@@ -15,9 +15,12 @@ const viewAuthor = (obj) => {
       </div>
       <p class="text-white">Books</p>
     </div>`;
+  renderToDOM('#view', domString1);
 
+  // const viewAuthorBooks = (obj.bookArray.forEach((book) => {
+  let domString2 = '';
   obj.bookArray.forEach((book) => {
-    domString += `
+    domString2 += `
       <div class="card">
         <img class="card-img-top" src=${book.image} alt=${book.title} style="height: 400px;">
         <div class="card-body" style="height: 180px;">
@@ -29,8 +32,9 @@ const viewAuthor = (obj) => {
             <i id="delete-book-btn--${book.firebaseKey}" class="btn btn-danger fas fa-trash-alt"></i>
         </div>
       </div>`;
+    // setTimeout(function () {
+    renderToDOM('#store', domString2);
+    // }, 100);
   });
-  renderToDOM('#view', domString);
 };
-
 export default viewAuthor;
