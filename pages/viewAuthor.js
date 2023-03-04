@@ -18,7 +18,7 @@ const viewAuthor = (obj) => {
   renderToDOM('#view', domString1);
 
   // const viewAuthorBooks = (obj.bookArray.forEach((book) => {
-  let domString2 = '';
+  let domString2 = ''; // how to render one function to different dom's
   obj.bookArray.forEach((book) => {
     domString2 += `
       <div class="card">
